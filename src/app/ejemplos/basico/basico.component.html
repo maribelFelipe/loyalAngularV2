@@ -1,0 +1,75 @@
+<!-- interpolacion -->
+<h1>
+    {{ title }} - {{ 1 + 1 }} - {{ getTitle() }}
+  </h1>
+  
+  <!-- directiva estructural -->
+  <div *ngIf="mostrarTexto; else ElseMostrarTexto">
+    El flag es verdadero {{ mostrarTexto }}
+  </div>
+  <!-- Else del ngIf -->
+  <ng-template #ElseMostrarTexto>
+    El flag es falso {{ mostrarTexto }}
+  </ng-template>
+  
+  <!-- property binding 
+    id="{{ title }}"
+    [id]="title"
+  
+    class="miboton" -> funciona ok
+    [ngClass]="'miboton'"
+    
+    [ngClass]="{'miboton' : mostrarTexto }" 
+    -> con esta directiva se pueden poner condiciones
+    -> Primero parametro la clase css y segundo la condicion a cumplir
+  -->
+  <button 
+    [ngClass]="{'miboton' : mostrarTexto }" 
+    [id]="title" 
+    (click)="cambiar()">
+      Cambiar
+  </button>
+  
+  <hr>
+  
+  <!-- for -->
+  <h2>
+    Idiomas
+  </h2>
+  
+  <!-- directiva estructural -->
+  <ul>
+    <li *ngFor="let aux of lenguajes; let i = index" 
+      [ngClass]="{'even' : i%2 !== 0, 'odd' : i%2 === 0}">
+      <!-- interpolacion de aux -->
+      <!-- pipe -> convertir a json: {{aux | json}} -->
+      {{ i }} {{ aux.name }}
+    </li>
+  </ul>
+  
+  <hr>
+  
+  <button (click)="mostrarLogin()">
+    Mostrar login
+  </button>
+  
+  <button (click)="ocultarLogin()">
+    Ocultar login
+  </button>
+  
+  {{ showLogin }}
+  
+  <!-- agregar el componente 
+    enviar parametros -> [user]="'Maribel'"
+  
+    recibir parametros del componente ->
+      (atrEventHijo)=funcionPadre(evento)
+  -->
+  <div *ngIf="showLogin">
+    <app-login 
+      [user]="'Maribel'"
+      (informarAlPadre)="recibirMensaje($event)"
+      >
+    </app-login>
+  </div>
+  
