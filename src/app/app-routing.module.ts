@@ -26,7 +26,7 @@ const routes: Routes = [
     path: 'basico', component: BasicoComponent
   },
   {
-    path: 'producto/:id', component: ProductoComponent
+    path: 'productos', component: ProductoComponent
   },
   {
     path: 'producto2/:id/:order', component: ProductoComponent
