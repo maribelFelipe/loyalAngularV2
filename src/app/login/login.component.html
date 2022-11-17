@@ -1,0 +1,19 @@
+<fieldset>
+    <legend>Login component</legend>
+    
+    <!--  
+        value="{{ username }} -> Solo cambia la variable en html
+        [(ngModel)]="username" -> Directiva que hace que se cambie la variable tanto en html como en ts
+    -->
+    <input type="text" 
+        [(ngModel)]="username">
+    {{ username }}
+    <br>
+    <button>
+        Login
+    </button>
+    <br>
+    <button (click)="emitirAlPadre()">
+        Emitir mensaje
+    </button>
+</fieldset>
