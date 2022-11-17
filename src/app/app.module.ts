@@ -7,12 +7,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { BasicoComponent } from './ejemplos/basico/basico.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { HomeComponent } from './home/home.component';
+import { ProductoComponent } from './producto/producto.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    BasicoComponent
+    BasicoComponent,
+    NotFoundComponent,
+    HomeComponent,
+    ProductoComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,

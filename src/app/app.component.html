@@ -5,6 +5,12 @@
 
 <ul>
   <li>
+    <a routerLink="/home" 
+        routerLinkActive="menuActive">
+      Home
+    </a>
+  </li>
+  <li>
     <a [routerLink]="'/login'"
         [routerLinkActive]="'menuActive'">
       Login
@@ -14,6 +20,19 @@
     <a routerLink="/basico" 
         routerLinkActive="menuActive">
       Basico
+    </a>
+  </li>
+  <li>
+    <a routerLink="/producto/1" 
+        routerLinkActive="menuActive">
+      Producto 1
+    </a>
+  </li>
+  <li>
+    <a routerLink="/producto2"
+       (click)="navegarPorTS()"
+      routerLinkActive="menuActive">
+      Producto TS
     </a>
   </li>
 </ul>
