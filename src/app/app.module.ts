@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 /** FormsModule se necesita importar para usar la directiva ngModel */
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +12,9 @@ import { HomeComponent } from './home/home.component';
 import { ProductoComponent } from './producto/producto.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { HttpClientModule} from '@angular/common/http';
+import { BuscarComponent } from './buscar/buscar.component';
+import { ResultadoComponent } from './resultado/resultado.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -21,13 +24,17 @@ import { HttpClientModule} from '@angular/common/http';
     NotFoundComponent,
     HomeComponent,
     ProductoComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    BuscarComponent,
+    ResultadoComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   /** 
    * providers: Servicios en angular

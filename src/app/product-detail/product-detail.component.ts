@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { PuedeDesactivar } from '../can-deactivated-guard.service';
 import { UserService } from '../user.service';
 import { User } from './user-dto';
 
@@ -11,7 +13,7 @@ import { User } from './user-dto';
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css']
 })
-export class ProductDetailComponent implements OnInit {
+export class ProductDetailComponent implements OnInit, PuedeDesactivar {
 
   user?: User;
 
@@ -20,8 +22,9 @@ export class ProductDetailComponent implements OnInit {
     private userService : UserService) { 
     }
 
+
   ngOnInit(): void {
-  
+    
     const id : number = this.activedRoute.snapshot.params['id'];
 
     // ir a buscar el detalle usando el httpclient
@@ -41,7 +44,6 @@ export class ProductDetailComponent implements OnInit {
      * 2. Actualizar el cambio (getCurrentUser)
      * 
      *  */ 
-    
     this.userService.getUser(id);
 
     this.userService.getCurrentUser().subscribe(
@@ -53,6 +55,11 @@ export class ProductDetailComponent implements OnInit {
   submitForm(formulario: NgForm) {
     console.log(formulario);
   
+  }
+
+
+  permitirSalir(): boolean | Observable<boolean> | Promise<boolean> {
+    return confirm('Desea salir?'); //true|false
   }
 
 }

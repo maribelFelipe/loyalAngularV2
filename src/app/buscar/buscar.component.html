@@ -1,0 +1,29 @@
+<fieldset>
+    <legend>Buscar usuario</legend>
+    <form #formulario='ngForm'
+      (ngSubmit)="buscar(formulario)">
+      <input type="text" class="form-control"
+        clave
+        ngModel
+        required
+        name="clave"
+        #clave="ngModel">
+      <button type="submit" class="btn btn-success">
+        Buscar
+      </button>
+    </form>
+</fieldset>
+
+<hr>
+
+<!-- directiva estructural -->
+<div *ngIf="idUsuario; else ElseMostrarResultado">
+    <h1>Resultado</h1>
+    <app-resultado></app-resultado>
+</div>
+<!-- Else del ngIf -->
+<ng-template #ElseMostrarResultado>
+    <h1>No hay usuario</h1>
+</ng-template>
+
+

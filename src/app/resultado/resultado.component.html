@@ -1,0 +1,47 @@
+<!-- <div *ngIf="user?.data?.id">
+    user: {{user | json}}
+</div> -->
+
+<form class="row g-3 needs-validation" novalidate [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="col-md-4">
+        <div class="card" style="width: 18rem;">
+            <img [src]="user?.data?.avatar" class="card-img-top" alt="...">
+        </div>
+    </div>
+    
+    <div class="col-md-1">
+        <label for="validationCustom02" class="form-label">ID</label>
+        <input type="number" formControlName="id"  class="form-control" id="validationCustom02" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+    <div class="col-md-4">
+      <label for="validationCustom01" class="form-label">First name</label>
+      <input type="text" formControlName="firstName" class="form-control" id="validationCustom01" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-4">
+        <label for="validationCustom01" class="form-label">Last name</label>
+        <input type="text" formControlName="lastName" class="form-control" id="validationCustom01" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+    <div class="col-md-4">
+      <label for="validationCustomUsername" class="form-label">Email</label>
+      <div class="input-group has-validation">
+        <span class="input-group-text" id="inputGroupPrepend">@</span>
+        <input type="text" formControlName="email" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+        <div class="invalid-feedback">
+          Please choose a username.
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <button class="btn btn-primary" type="submit">Submit form</button>
+    </div>
+  </form>

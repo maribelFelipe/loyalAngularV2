@@ -35,6 +35,7 @@ export class UserService {
     // hace busquedas
     // consultar el api > json >
     // cambiar el estado del user .next()
+    
     this.httpClient.get<User>(`${environment.reqResBaseUrl}/users/${id}`)
       .subscribe(
           data => this.user.next(data)

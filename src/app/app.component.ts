@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from './user.service';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +11,7 @@ import { UserService } from './user.service';
 export class AppComponent {
   title: string = 'INICIO';
 
-  constructor(private router: Router,
-    private userService : UserService){}
+  constructor(private router: Router){}
 
   // Ir a /producto/1 -> routerLink
   /**
@@ -25,12 +23,6 @@ export class AppComponent {
    */
   navegarPorTS() : void {
     this.router.navigate(['/producto2', '2', 'ASC'])
-  }
-
-  buscar(form: NgForm): void {
-    // ejecutar la busqueda
-    const clave = form.controls['clave'].value;
-    this.userService.getUser(+clave);
   }
 
 }

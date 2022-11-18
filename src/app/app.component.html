@@ -3,27 +3,27 @@
     routerLink="/basico"
 -->
 
-<ul>
-  <li>
-    <a routerLink="/home" 
+<ul class="nav">
+  <li class="nav-item">
+    <a routerLink="/home" class="nav-link"
         routerLinkActive="menuActive">
       Home
     </a>
   </li>
-  <li>
-    <a [routerLink]="'/login'"
+  <li class="nav-item">
+    <a [routerLink]="'/login'" class="nav-link"
         [routerLinkActive]="'menuActive'">
       Login
     </a>
   </li>
-  <li>
-    <a routerLink="/basico" 
+  <li class="nav-item">
+    <a routerLink="/basico" class="nav-link"
         routerLinkActive="menuActive">
       Basico
     </a>
   </li>
-  <li>
-    <a routerLink="/productos" 
+  <li class="nav-item">
+    <a routerLink="/productos" class="nav-link"
         routerLinkActive="menuActive">
       Listado de productos
     </a>
@@ -36,22 +36,22 @@
     </a>
   </li>--> 
 
-  <li>
-    <form #formulario='ngForm'
-      (ngSubmit)="buscar(formulario)">
-      <input type="text" 
-        clave
-        ngModel
-        required
-        name="clave"
-        #clave="ngModel">
-      <button type="submit">
-        Buscar
-      </button>
-    </form>
+  <li class="nav-item">
+    <a routerLink="/buscar" class="nav-link"
+    routerLinkActive="menuActive">
+      Buscar usuario
+    </a> 
+  </li>
+
+  <li class="nav-item">
+    <a routerLink="/profile" class="nav-link"
+    routerLinkActive="menuActive">
+      Perfil
+    </a> 
   </li>
 </ul>
 
-<!-- Aqui se cargan los html enrutados -->
-<router-outlet></router-outlet>
-
+<div class="container">
+  <!-- Aqui se cargan los html enrutados -->
+  <router-outlet></router-outlet>
+</div>
