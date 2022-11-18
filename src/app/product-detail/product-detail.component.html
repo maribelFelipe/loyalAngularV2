@@ -1,2 +1,97 @@
 <p>product-detail works!</p>
-{{ producto }}
+<!-- {{ user | json }} -->
+<div class="container">
+    <!--formulario: template driven -->
+    <fieldset>
+        <legend>Datos de usuario</legend>
+        <form #formulario='ngForm'
+            (ngSubmit)="submitForm(formulario)">
+            <label>Id</label>
+            <input type="number" 
+                value="{{ user?.data?.id }}"
+                name="id" 
+                #id='ngModel'
+                ngModel
+                required
+                id
+                [ngClass]="{'is-invalid': id.touched && id.invalid}"
+              />
+            
+            <label>email</label>
+            <input type="email" 
+                value="{{ user?.data?.email }}" 
+                name="email" 
+                #email='ngModel'
+                ngModel
+                required
+                email
+                [ngClass]="{'is-invalid': email.touched && email.invalid}"
+                />
+            
+            <label>First name</label>
+            <input type="text" 
+                value="{{ user?.data?.first_name }}"
+                name="firstName" 
+                #firstName='ngModel'
+                ngModel
+                required
+                firstName
+                [ngClass]="{'is-invalid': firstName.touched && firstName.invalid}"
+                />         
+            <br>         
+            <label>Last name</label>
+            <input type="text" 
+                value="{{ user?.data?.last_name }}"
+                name="lastName" 
+                #lastName='ngModel'
+                ngModel
+                required
+                lastName
+                [ngClass]="{'is-invalid': lastName.touched && lastName.invalid}"
+                />
+            
+            <label>Avatar</label>
+            <img [src]="user?.data?.avatar"/>
+            
+            <label>Support</label>
+            <input type="url" 
+                value="{{ user?.support?.url }}" 
+                name="url" 
+                #url='ngModel'
+                ngModel
+                required
+                url
+                [ngClass]="{'is-invalid': url.touched && url.invalid}"
+                />
+            
+            <label>Text</label>
+            <input type="text" 
+                value="{{ user?.support?.text }}" 
+                name="text" 
+                #text='ngModel'
+                ngModel
+                required
+                text
+                [ngClass]="{'is-invalid': text.touched && text.invalid}"
+                />
+            
+            <button type="submit">
+                Guardar
+            </button>
+        </form>
+    </fieldset>
+</div>
+<div>
+    <fieldset>
+        <legend>Información de formulario</legend> 
+        <ul>
+            <li>Values: {{formulario.value | json}} </li> 
+            <li>Valid: {{formulario.valid}} </li> 
+            <li>Invalid: {{formulario.invalid}} </li>
+            <li>Submited: {{formulario.submitted}} </li>
+            <li>Pristine: {{formulario.pristine}} </li>
+            <li>Touch: {{formulario.touched}} </li>
+            <li>Dirty: {{formulario.dirty}} </li>
+        </ul>
+    </fieldset>
+</div>

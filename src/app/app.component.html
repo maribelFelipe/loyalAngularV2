@@ -35,6 +35,21 @@
       Producto TS
     </a>
   </li>--> 
+
+  <li>
+    <form #formulario='ngForm'
+      (ngSubmit)="buscar(formulario)">
+      <input type="text" 
+        clave
+        ngModel
+        required
+        name="clave"
+        #clave="ngModel">
+      <button type="submit">
+        Buscar
+      </button>
+    </form>
+  </li>
 </ul>
 
 <!-- Aqui se cargan los html enrutados -->

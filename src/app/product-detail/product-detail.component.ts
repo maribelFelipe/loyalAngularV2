@@ -1,7 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { UserService } from '../user.service';
+import { User } from './user-dto';
 
 @Component({
   selector: 'app-product-detail',
@@ -10,26 +13,46 @@ import { environment } from 'src/environments/environment';
 })
 export class ProductDetailComponent implements OnInit {
 
-  producto?: string;
+  user?: User;
 
   constructor(private activedRoute: ActivatedRoute,
-    private httpClient : HttpClient) { 
+    //private httpClient : HttpClient
+    private userService : UserService) { 
     }
 
   ngOnInit(): void {
-    // ir a buscar el detalle usando el httpclient (por ahora!)
-    const id = this.activedRoute.snapshot.params['id'];
+  
+    const id : number = this.activedRoute.snapshot.params['id'];
 
+    // ir a buscar el detalle usando el httpclient
     // ARMAR LA URL DEL RECURSO
     // https://reqres.in/api/users/2
-    this.httpClient.get(`${environment.reqResBaseUrl}/users/${id}`)
+    /** this.httpClient.get<User>(`${environment.reqResBaseUrl}/users/${id}`)
       .subscribe(
         data => {
-          this.producto = JSON.stringify(data);
+          this.user = data;
         }
-    );
+    ); */
 
+    /**
+     * Llamada a traves del observable del servicio userService
+     * 
+     * 1. Busqueda (getUser)
+     * 2. Actualizar el cambio (getCurrentUser)
+     * 
+     *  */ 
+    
+    this.userService.getUser(id);
 
+    this.userService.getCurrentUser().subscribe(
+      data => this.user = data
+    )
+
+  }
+
+  submitForm(formulario: NgForm) {
+    console.log(formulario);
+  
   }
 
 }
