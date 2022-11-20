@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { User } from '../product-detail/user-dto';
 
 @Component({
   selector: 'app-profile',
@@ -8,11 +9,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
 
+  datosDelProfile: User | undefined; 
+  
   constructor(private activatedRoute : ActivatedRoute) { }
 
   ngOnInit(): void {
-    const datosDelProfile = this.activatedRoute.snapshot.data['datosDelProfile'];
-    console.log(datosDelProfile);
+    this.datosDelProfile = this.activatedRoute.snapshot.data['datosDelProfile'];
+    console.log(this.datosDelProfile);
   }
 
 }
